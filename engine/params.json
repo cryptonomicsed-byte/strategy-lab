@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "status": "DRAFT",
+  "owner": "LANE 1 — SIGNAL ENGINE (panel-loom, branch: engine)",
+  "updated": "2026-08-19",
+  "half_life_hours": 2.0,
+  "notes": "Aligned to hub/score_schema.md §2.1 contract. The hub reads this file to evaluate C_engine: for each signal, a fired record in engine/fired_signals.json (id + strength + ts) is decayed by half_life_hours and weighted. min_confidence is the engine's own gate for publishing a fired record; thresholds are the fire conditions. Weights sum to 1.0. DRAFT until calibration (§7 of score_schema.md) moves them.",
+  "signals": [
+    {
+      "id": "new_pool_graduation",
+      "label": "fresh graduation / new pool",
+      "weight": 0.25,
+      "direction": 1,
+      "threshold": {
+        "minutes_since_open_max": 5,
+        "launchpad_status_min": 1,
+        "graduation_ok": true
+      },
+      "min_confidence": 0.5,
+      "data_source": "gmgn-cli token info (open_timestamp, launchpad_status, migrated_pool) + GeckoTerminal pool_created_at",
+      "half_life_hours": 1.0,
+      "rationale": "Tokens that just opened for trading (pump.fun bonding-curve fill / fresh pool) are the rawest early-entry universe; crowd volume arrives minutes later. Lead time measured in backtest.md §3."
+    },
+    {
+      "id": "bundler_share",
+      "label": "bundler / sniper preload",
+      "weight": 0.20,
+      "direction": 1,
+      "threshold": {
+        "top_bundler_trader_percentage_min": 0.15,
+        "sniper_wallets_min": 1
+      },
+      "min_confidence": 0.5,
+      "data_source": "gmgn-cli token info (stat.top_bundler_trader_percentage, wallet_tags_stat.sniper_wallets)",
+      "half_life_hours": 2.0,
+      "rationale": "High bundler-trade share at launch = bots loaded before the crowd. Historically precedes the FOMO leg; also a rug-watch flag (bundlers that dump instantly disqualify)."
+    },
+    {
+      "id": "volume_pressure",
+      "label": "volume before price",
+      "weight": 0.20,
+      "direction": 1,
+      "threshold": {
+        "volume_5m_usd_min": 25000,
+        "price_change_5m_max": 0.15,
+        "buys_vs_sells_5m_min": 1.0
+      },
+      "min_confidence": 0.5,
+      "data_source": "gmgn-cli token info (price.volume_5m, price.buy_volume_5m, price.sell_volume_5m, price.buys_5m, price.sells_5m)",
+      "half_life_hours": 1.0,
+      "rationale": "Rising volume BEFORE the price move (not after) is the signature the doctrine asks for: accumulation shows up in volume first. Backtest: volume-leads-price gap in §3."
+    },
+    {
+      "id": "dev_holding",
+      "label": "dev still holding",
+      "weight": 0.20,
+      "direction": 1,
+      "threshold": {
+        "creator_token_status": "hold",
+        "creator_hold_rate_min": 0.0
+      },
+      "min_confidence": 0.6,
+      "data_source": "gmgn-cli token info (dev.creator_token_status, dev.creator_token_balance, stat.creator_hold_rate)",
+      "half_life_hours": 4.0,
+      "rationale": "Dev sells are the #1 early-kill risk. Dev still holding (status='hold') removes the dump-the-rug failure mode; direction is +1 only when holding, and a dev dump at any point is a hard veto downstream (gate, not score)."
+    },
+    {
+      "id": "holder_concentration",
+      "label": "healthy holder spread",
+      "weight": 0.15,
+      "direction": 1,
+      "threshold": {
+        "top_10_holder_rate_max": 0.35,
+        "dev_team_hold_rate_max": 0.10
+      },
+      "min_confidence": 0.5,
+      "data_source": "gmgn-cli token info (stat.top_10_holder_rate, stat.dev_team_hold_rate, stat.holder_count)",
+      "half_life_hours": 4.0,
+      "rationale": "Early pumps show a distinctive top-10 concentration curve: it dilutes as the crowd arrives. Sub-35% top-10 (and <10% dev team) at the same moment volume starts rising = distribution, not accumulation trap. Above 35% → risk flag, not a buy."
+    }
+  ]
+}
