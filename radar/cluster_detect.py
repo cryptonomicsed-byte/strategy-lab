@@ -196,7 +196,7 @@ def main():
                           window_min if window_min else args.window_min)
     out = {
         "schema_version": SCHEMA_VERSION,
-        "generated_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.datetime.now(datetime.UTC).isoformat().replace("+00:00", "Z"),
         "ts": round(now, 3),
         "mode": mode,
         "min_conviction": args.min_conv,
