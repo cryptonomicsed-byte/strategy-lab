@@ -1,0 +1,155 @@
+[
+  {
+    "schema_version": 1,
+    "status": "DRAFT",
+    "token": "DMXBsVBwfuzc5axa2vz6Ba2BzAxcUmn6V7ZtsJFEpump",
+    "symbol": "TOADS",
+    "ts": 1787126901.362,
+    "score": 53.92,
+    "verdict": "WATCH",
+    "reason": "fusion rank 2",
+    "components": {
+      "engine": {
+        "present": false,
+        "value": null,
+        "weight": 0.35,
+        "drivers": [],
+        "note": "engine/params.json not landed (lane 1 pending)"
+      },
+      "radar": {
+        "present": false,
+        "value": null,
+        "weight": 0.35,
+        "drivers": [],
+        "note": "no watchlist cluster in window",
+        "cluster": {
+          "wallet_count": 0,
+          "window_min": 180
+        }
+      },
+      "fusion": {
+        "present": true,
+        "value": 0.5392,
+        "weight": 0.3,
+        "pick_id": 46,
+        "rank": 2,
+        "entry_price": 6.853e-05,
+        "drivers": {
+          "S_signal": {
+            "value": 0.0,
+            "present": false
+          },
+          "S_wallet": {
+            "value": 0.5392,
+            "present": true
+          },
+          "S_market": {
+            "value": 0.4162,
+            "present": true,
+            "liquidity_usd": 19052.57
+          }
+        }
+      }
+    },
+    "fired_signals": [
+      "fusion:S_wallet=0.54 (1 wallet drivers)",
+      "fusion:rank=2 (top pick)"
+    ],
+    "gates": {
+      "passed": true,
+      "vetoes": []
+    },
+    "data_quality": {
+      "engine_available": false,
+      "radar_available": false,
+      "fusion_available": true,
+      "min_data": "partial"
+    },
+    "followups": {
+      "6h": null,
+      "24h": null
+    },
+    "pick_ref": {
+      "fusion_pick_id": 46,
+      "rank": 2,
+      "entry_price": 6.853e-05
+    }
+  },
+  {
+    "schema_version": 1,
+    "status": "DRAFT",
+    "token": "7c9sXHS879M9fq9Gex4pCSHYGeBDVK7yErKGMAxypump",
+    "symbol": "CATURN",
+    "ts": 1787126901.311,
+    "score": 68.79,
+    "verdict": "WATCH",
+    "reason": "fusion rank 1",
+    "components": {
+      "engine": {
+        "present": false,
+        "value": null,
+        "weight": 0.35,
+        "drivers": [],
+        "note": "engine/params.json not landed (lane 1 pending)"
+      },
+      "radar": {
+        "present": false,
+        "value": null,
+        "weight": 0.35,
+        "drivers": [],
+        "note": "no watchlist cluster in window",
+        "cluster": {
+          "wallet_count": 0,
+          "window_min": 180
+        }
+      },
+      "fusion": {
+        "present": true,
+        "value": 0.6878500000000001,
+        "weight": 0.3,
+        "pick_id": 45,
+        "rank": 1,
+        "entry_price": 0.0001892,
+        "drivers": {
+          "S_signal": {
+            "value": 0.5925,
+            "present": true
+          },
+          "S_wallet": {
+            "value": 0.7832,
+            "present": true
+          },
+          "S_market": {
+            "value": 0.467,
+            "present": true,
+            "liquidity_usd": 34193.5
+          }
+        }
+      }
+    },
+    "fired_signals": [
+      "fusion:S_signal=0.59",
+      "fusion:S_wallet=0.78 (4 wallet drivers)",
+      "fusion:rank=1 (top pick)"
+    ],
+    "gates": {
+      "passed": true,
+      "vetoes": []
+    },
+    "data_quality": {
+      "engine_available": false,
+      "radar_available": false,
+      "fusion_available": true,
+      "min_data": "partial"
+    },
+    "followups": {
+      "6h": null,
+      "24h": null
+    },
+    "pick_ref": {
+      "fusion_pick_id": 45,
+      "rank": 1,
+      "entry_price": 0.0001892
+    }
+  }
+]
