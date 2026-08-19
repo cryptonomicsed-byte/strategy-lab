@@ -1,0 +1,742 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-19T20:12:57.586684Z",
+  "ts": 1787170371.687,
+  "mode": "live",
+  "min_conviction": 0.5,
+  "count": 33,
+  "events": [
+    {
+      "token": "3Sa6oRwRfC3d7VGSGdpQpoKd7DjTApgw4WAeYya7pump",
+      "symbol": "POND",
+      "wallet_count": 4,
+      "conviction": 0.9008,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 835.19,
+      "band": "CRITICAL",
+      "members": [
+        {
+          "wallet": "8dej9xeuvxsjwicypta9mhsu2rn2pdx37kwzkdkexhu6",
+          "conviction": 0.9328,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        },
+        {
+          "wallet": "2fg5qd1ed7rznncsvnhmxfm5hqngwttg8p7kq6f3rx6f",
+          "conviction": 0.9169,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        },
+        {
+          "wallet": "suqh5shtr8hyj7q8scbimulpkppa557prmg47xchqfk",
+          "conviction": 0.885,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        },
+        {
+          "wallet": "faicxnv5fvqtfbpn4zccs71xcfgeyxbsgbqldydjzjke",
+          "conviction": 0.8684,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        }
+      ]
+    },
+    {
+      "token": "GCGtrtHUxkKiuMBBPzeL73cRG8YxrcJ8L5E8FjEpump",
+      "symbol": "CROOK",
+      "wallet_count": 4,
+      "conviction": 0.761,
+      "window_min": 180.0,
+      "spread_min": 7.17,
+      "volume_usd": 1215.87,
+      "band": "CRITICAL",
+      "members": [
+        {
+          "wallet": "2fg5qd1ed7rznncsvnhmxfm5hqngwttg8p7kq6f3rx6f",
+          "conviction": 0.9169,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        },
+        {
+          "wallet": "suqh5shtr8hyj7q8scbimulpkppa557prmg47xchqfk",
+          "conviction": 0.885,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        },
+        {
+          "wallet": "8n79pwcyrybeecm3ghgetpnm6y2srbvzjnd536z1c1pu",
+          "conviction": 0.6325,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        },
+        {
+          "wallet": "6tadn51sj11vkx23ewelgqzshjwexlzmnc3eqi5kreuo",
+          "conviction": 0.6096,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "2rxzvLEW8wywGX6WPxuBBZZLHGF28WbsMtswk4oxpump",
+      "symbol": "GTAMemes",
+      "wallet_count": 4,
+      "conviction": 0.7333,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 497.72,
+      "band": "CRITICAL",
+      "members": [
+        {
+          "wallet": "99i9uva7q56by22ajkkuftztgtep5yctvgsrg9j4pdyq",
+          "conviction": 0.8936,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        },
+        {
+          "wallet": "bqvz7fq1wsqmstmy3umdpepptm1sdcbcx9sp7o6kprmb",
+          "conviction": 0.7866,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        },
+        {
+          "wallet": "j898bldjuwfpsvqwraj1rjg33re9b6zjy6hvwfkx71fo",
+          "conviction": 0.6502,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        },
+        {
+          "wallet": "8vqasn7ygjjwajrqpujnt3uwbfquadniuweovcxygqlu",
+          "conviction": 0.6027,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "CagSKvMxHZWeLDBQVeQkrAe4xU2MzD89MyYNVnDAavZu",
+      "symbol": "MACHINE",
+      "wallet_count": 3,
+      "conviction": 0.8405,
+      "window_min": 180.0,
+      "spread_min": 7.17,
+      "volume_usd": 551.72,
+      "band": "CRITICAL",
+      "members": [
+        {
+          "wallet": "2fg5qd1ed7rznncsvnhmxfm5hqngwttg8p7kq6f3rx6f",
+          "conviction": 0.9169,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        },
+        {
+          "wallet": "suqh5shtr8hyj7q8scbimulpkppa557prmg47xchqfk",
+          "conviction": 0.885,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        },
+        {
+          "wallet": "7ke2pvmakpmdipdmoaet3ep5duvesdxrbxsxkpsock4t",
+          "conviction": 0.7195,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        }
+      ]
+    },
+    {
+      "token": "FuQcKP2F5fJGNZQgZP8TBvHs7UVj29tKMrxsDALLpump",
+      "symbol": "TURKEY",
+      "wallet_count": 3,
+      "conviction": 0.7395,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 210.51,
+      "band": "CRITICAL",
+      "members": [
+        {
+          "wallet": "faicxnv5fvqtfbpn4zccs71xcfgeyxbsgbqldydjzjke",
+          "conviction": 0.8684,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        },
+        {
+          "wallet": "ct9dekyfadmyxldfxv76asslo2qkxaj5cgpmvm2rckvc",
+          "conviction": 0.7611,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        },
+        {
+          "wallet": "5w8bbn5aka54sf2dzesxa4hczrz1ga1ou7tpvjkr5h1a",
+          "conviction": 0.589,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "81KUVS4kx2YpDPJ5nD9wz6sAmuvZd7BzRS1xtaNEpump",
+      "symbol": "UNITREE",
+      "wallet_count": 3,
+      "conviction": 0.6291,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 639.59,
+      "band": "CRITICAL",
+      "members": [
+        {
+          "wallet": "29ksduqtxcvtxz6pcbsg9urlxbybffqsv5aqdqgyym4f",
+          "conviction": 0.651,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        },
+        {
+          "wallet": "qmee3k2tfjprzf6hybernwhqecttepe8wxinbteeoa7",
+          "conviction": 0.6431,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        },
+        {
+          "wallet": "fsambd6jm6szzqadsjec1pax3ottaiy9htx1uyzvoxqj",
+          "conviction": 0.5932,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "2XEkXwfDoCnd17xXKCyfdRsfRjH6kpQDZZq4xFXWpump",
+      "symbol": "VPN",
+      "wallet_count": 3,
+      "conviction": 0.6239,
+      "window_min": 180.0,
+      "spread_min": 7.17,
+      "volume_usd": 938.13,
+      "band": "CRITICAL",
+      "members": [
+        {
+          "wallet": "earaxkcxv6tyrcz94riibarfquw43atfvxfugjasan54",
+          "conviction": 0.6554,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        },
+        {
+          "wallet": "29ksduqtxcvtxz6pcbsg9urlxbybffqsv5aqdqgyym4f",
+          "conviction": 0.651,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        },
+        {
+          "wallet": "b8aiinqmb59pdwdnjxmezskpi2lcwgwahpexzscs6sdq",
+          "conviction": 0.5653,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        }
+      ]
+    },
+    {
+      "token": "8gFywdHpEQBRSB7WF1BGJFWabYdfsFrLN4RxSFdpump",
+      "symbol": "Retire",
+      "wallet_count": 2,
+      "conviction": 0.8879,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 420.11,
+      "band": "STRONG",
+      "members": [
+        {
+          "wallet": "pmja8uqdywtfw2smhyp9jga6atap7jkhr7bpudrgyyn",
+          "conviction": 0.9266,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        },
+        {
+          "wallet": "ardinrsn1mnyveojwtbsweyexvur9uudgmscdkpb6at",
+          "conviction": 0.8491,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "8k6YidRtD893CYRRKeWvGp2ixwTVU2haf5ymrwwZpump",
+      "symbol": "Science",
+      "wallet_count": 2,
+      "conviction": 0.8228,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 307.3,
+      "band": "STRONG",
+      "members": [
+        {
+          "wallet": "65nrohhfdjjhm7ow9kvpfvt8jrwpxg2kbhecvgqsj3jr",
+          "conviction": 0.8591,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        },
+        {
+          "wallet": "bqvz7fq1wsqmstmy3umdpepptm1sdcbcx9sp7o6kprmb",
+          "conviction": 0.7866,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        }
+      ]
+    },
+    {
+      "token": "EXYEkUiKhy7vcgMJktCWGygkCiEAh2GBBntWDLnApump",
+      "symbol": "PAY",
+      "wallet_count": 2,
+      "conviction": 0.8191,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 409.51,
+      "band": "STRONG",
+      "members": [
+        {
+          "wallet": "4vw54bmaogerv3vpkwyfet5yf8dtlcrezdszx4rw9ud9",
+          "conviction": 0.8515,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        },
+        {
+          "wallet": "bqvz7fq1wsqmstmy3umdpepptm1sdcbcx9sp7o6kprmb",
+          "conviction": 0.7866,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "6v9VyLASfFuuYqqJBBFoNR2sfYNBmSH8a2CD6NNYRdiB",
+      "symbol": "PIC",
+      "wallet_count": 2,
+      "conviction": 0.6673,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 285.31,
+      "band": "STRONG",
+      "members": [
+        {
+          "wallet": "bqvz7fq1wsqmstmy3umdpepptm1sdcbcx9sp7o6kprmb",
+          "conviction": 0.7866,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        },
+        {
+          "wallet": "bcnqspeta1tkgednyeebrpkmwfrjdcjmqckzmmtedarc",
+          "conviction": 0.548,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        }
+      ]
+    },
+    {
+      "token": "AkyVXqKQ6V6qpqNo7RBfGzyRCKp42fWgCtgeR4s2pump",
+      "symbol": "Haggis",
+      "wallet_count": 2,
+      "conviction": 0.6246,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 373.25,
+      "band": "STRONG",
+      "members": [
+        {
+          "wallet": "8n79pwcyrybeecm3ghgetpnm6y2srbvzjnd536z1c1pu",
+          "conviction": 0.6325,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        },
+        {
+          "wallet": "cc6dfeplea5ubremgnhvcsjjry4nef1xuf6d6mbxdxtf",
+          "conviction": 0.6167,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "EBfboxCxZtukygge9bwECGsheZuq7x5ExUyMdc6pump",
+      "symbol": "HAWT",
+      "wallet_count": 2,
+      "conviction": 0.6155,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 2487.23,
+      "band": "STRONG",
+      "members": [
+        {
+          "wallet": "9qvvknue3z3du8f5tcpamt2sxebvgwphquratdh6zgri",
+          "conviction": 0.6506,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        },
+        {
+          "wallet": "btinaidwsazudvqf1vgcv3guvglxvvaj76kaboqkja6",
+          "conviction": 0.5804,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "BSY3qBRwp1RvcNsFiBUFJTKr7NVDv6PFCejVV6crpump",
+      "symbol": "TRUMP",
+      "wallet_count": 1,
+      "conviction": 0.9328,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 321.95,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "8dej9xeuvxsjwicypta9mhsu2rn2pdx37kwzkdkexhu6",
+          "conviction": 0.9328,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "7Sd1pjnG414TyjwJEnvEQvNa3Syb1jXP55hQGC6ASyF9",
+      "symbol": "ASTERIX",
+      "wallet_count": 1,
+      "conviction": 0.9266,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 113.75,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "pmja8uqdywtfw2smhyp9jga6atap7jkhr7bpudrgyyn",
+          "conviction": 0.9266,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        }
+      ]
+    },
+    {
+      "token": "3SPTgoQ7q1cD3LwPNSvC251KmDdwDwQ5k83V1GyApump",
+      "symbol": "Otter",
+      "wallet_count": 1,
+      "conviction": 0.9266,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 97.82,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "pmja8uqdywtfw2smhyp9jga6atap7jkhr7bpudrgyyn",
+          "conviction": 0.9266,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        }
+      ]
+    },
+    {
+      "token": "5EKpkHrycjZUm15X5ykoRTbxR4Q6oxpvRRB2Hyn3pump",
+      "symbol": "VI",
+      "wallet_count": 1,
+      "conviction": 0.9266,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 103.97,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "pmja8uqdywtfw2smhyp9jga6atap7jkhr7bpudrgyyn",
+          "conviction": 0.9266,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "8NpYFPzkz6a6wi7qy89YB9nXpQhuZpbgVAgrB9VVpump",
+      "symbol": "onboardler",
+      "wallet_count": 1,
+      "conviction": 0.9266,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 107.9,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "pmja8uqdywtfw2smhyp9jga6atap7jkhr7bpudrgyyn",
+          "conviction": 0.9266,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "5Wxuk21We9ajaEyBzMhGB44DXubGaWwiQr8viwtGpump",
+      "symbol": "Jobaphobia",
+      "wallet_count": 1,
+      "conviction": 0.9266,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 97.58,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "pmja8uqdywtfw2smhyp9jga6atap7jkhr7bpudrgyyn",
+          "conviction": 0.9266,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "GpfcD4bmNQT6BuhLHzZvF9qGbpfoUdbj1EPNBtWZpump",
+      "symbol": "FOMC",
+      "wallet_count": 1,
+      "conviction": 0.9266,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 197.01,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "pmja8uqdywtfw2smhyp9jga6atap7jkhr7bpudrgyyn",
+          "conviction": 0.9266,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "DCHKemF4rpVvS5FGCzs7YSWQUcApjJJHpTVdXujDpump",
+      "symbol": "cyberleek",
+      "wallet_count": 1,
+      "conviction": 0.8936,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 100.04,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "99i9uva7q56by22ajkkuftztgtep5yctvgsrg9j4pdyq",
+          "conviction": 0.8936,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "GS24yxWMCV7d4GwT2FbNSRA29NM84uYRXHspkoPXpump",
+      "symbol": "Toad",
+      "wallet_count": 1,
+      "conviction": 0.8515,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 238.74,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "4vw54bmaogerv3vpkwyfet5yf8dtlcrezdszx4rw9ud9",
+          "conviction": 0.8515,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        }
+      ]
+    },
+    {
+      "token": "4errTM2Fef7xpEvwGMai4L6SSHrXYP5uHtHAtC4fpump",
+      "symbol": "Hypercoin",
+      "wallet_count": 1,
+      "conviction": 0.8491,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 119.02,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "ardinrsn1mnyveojwtbsweyexvur9uudgmscdkpb6at",
+          "conviction": 0.8491,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "CpYAcmMicNfRPQ4mUL7wJapgCY9uYDbajC5HcMeEpump",
+      "symbol": "\ud83d\udfe9",
+      "wallet_count": 1,
+      "conviction": 0.8432,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 47.0,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "67nwfi9hgwqhxgoovt2jglu67uxfomlwqawncjxxzu6u",
+          "conviction": 0.8432,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "46vV3ZpFNLZn1CDRYnAvqPsdW5ejEYn9GK9kPcZFpump",
+      "symbol": "honse",
+      "wallet_count": 1,
+      "conviction": 0.799,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 34.05,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "9nxnywh7n8d8ihguy2fcjn9hepwxkycdlybdbfidm4rs",
+          "conviction": 0.799,
+          "first_buy_ts": 1787159807.588,
+          "age_min": 176.1
+        }
+      ]
+    },
+    {
+      "token": "7BXYMC2Fr1sExAj7gH71YJNhWzw532AN7WLdmVZnpump",
+      "symbol": "SHILL",
+      "wallet_count": 1,
+      "conviction": 0.798,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 88.94,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "41uh7g1dxyayxdtjbiychcgbniv9wx57b7hu7rxmx1gg",
+          "conviction": 0.798,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "6ZC5kpZf9kLfxwMc4QVZfGJksTLrZQUTmKJCDaaopump",
+      "symbol": "MEMESLY",
+      "wallet_count": 1,
+      "conviction": 0.788,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 33.98,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "cufor95txudybvtfrobbz1bvh4qpdup7mvfaekxe9y2u",
+          "conviction": 0.788,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "H2Eji5f8a1HJAEMJcL5PAnhP98E3vPWtCfzkuwQDpump",
+      "symbol": "H2Eji5f8",
+      "wallet_count": 1,
+      "conviction": 0.7681,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 42.83,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "ctfmuvkvrrvlmbssybwstpsvkddvrwub1nx7crmgdh1g",
+          "conviction": 0.7681,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "6YXw6zTJyYo7zLmEXzPPufpMzRYt7JHCbc5cFEHNpump",
+      "symbol": "CLUG",
+      "wallet_count": 1,
+      "conviction": 0.736,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 380.05,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "cqjygzycxwh7smjrspoz4jwg481lakuumywrot9fcgmz",
+          "conviction": 0.736,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "EoFdXTYJnW35D8DbZ5qjTh8H9oT9uRDQJ94VTN46pump",
+      "symbol": "NOW",
+      "wallet_count": 1,
+      "conviction": 0.7355,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 3.21,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "78n177fznjpp8pg49xdv1efyctmszo9tptkea9mavkh2",
+          "conviction": 0.7355,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "YyuV9yubu7h3uJYiB8yi3SZ8Ffcxkp7uvMbhw56pump",
+      "symbol": "ROBRO",
+      "wallet_count": 1,
+      "conviction": 0.7105,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 8.88,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "8clktahzt1jof4swh7ykjgaa8qge1t1szdowjjsoggys",
+          "conviction": 0.7105,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    },
+    {
+      "token": "5U6FfqEvqMcvv8oTjKEAZL7QXJaXSp9Bb2EUJ1wGpump",
+      "symbol": "5U6FfqEv",
+      "wallet_count": 1,
+      "conviction": 0.6557,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 81.17,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "bzoxfu8yafrqskpbnvwbpdiy3kkabgaz5gsqehz1qq5i",
+          "conviction": 0.6557,
+          "first_buy_ts": 1787160237.586,
+          "age_min": 168.9
+        }
+      ]
+    },
+    {
+      "token": "87GpMQP3mcQP86a1ZZSTicxwh6LR47VGXuJmuxJ7pump",
+      "symbol": "87GpMQP3",
+      "wallet_count": 1,
+      "conviction": 0.6506,
+      "window_min": 180.0,
+      "spread_min": 0.0,
+      "volume_usd": 766.69,
+      "band": "WEAK",
+      "members": [
+        {
+          "wallet": "9qvvknue3z3du8f5tcpamt2sxebvgwphquratdh6zgri",
+          "conviction": 0.6506,
+          "first_buy_ts": 1787164389.495,
+          "age_min": 99.7
+        }
+      ]
+    }
+  ]
+}

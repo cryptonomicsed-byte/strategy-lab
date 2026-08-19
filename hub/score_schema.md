@@ -1,7 +1,7 @@
 # EARLY-ENTRY SCORE — canonical definition (v1)
 
 **Owner:** LANE 3 — Convergence Hub (panel-omokoda, branch `hub`)
-**STATUS: NEAR-LOCK** — hub lane finalization complete: schema v1 live-verified
+**STATUS: LOCKED** (2026-08-19 — orchestrator-locked: all 3 lanes merged, see STRATEGY.md) — hub lane finalization complete: schema v1 live-verified
 against a real token (see §8) and `hub/score.py` records verdicts end-to-end.
 The score degrades gracefully and reports exactly what it knows while lane 1/2
 deliverables are outstanding.
