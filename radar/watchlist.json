@@ -1,0 +1,2625 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-19T19:28:03.298700Z",
+  "meta": {
+    "lane": "radar",
+    "purpose": "ranked first-mover wallets feeding hub radar component (score_schema.md \u00a72.2; min_conviction 0.50)",
+    "conviction_scale": "0..1 (hub-normalized)",
+    "evidence_bar": "early_buys >= 3 OR (early_buys >= 2 AND first_buyer_hits >= 1)",
+    "scoring": {
+      "freq": "logistic(log1p(early_buys + 2*first_buyer_hits), 1.8)",
+      "speed": "1.0 hits>=2 / 0.92 hits==1 / 1/(1+median_lag/15) / 0.7",
+      "recency": "exp(-days_since_last_buy/14)",
+      "reputation": "0.5*tag_pts + 0.3*vantage_norm + 0.2*copy_norm",
+      "raw": "0.50*freq + 0.25*speed + 0.10*recency + 0.15*reputation",
+      "calibration": "min-max of raw onto [0.50, 0.95] over qualified set"
+    },
+    "tiers": {
+      "S": ">= 0.80",
+      "A": ">= 0.65",
+      "B": ">= 0.50"
+    },
+    "counts": {
+      "qualified": 132,
+      "by_tier": {
+        "S": 16,
+        "A": 58,
+        "B": 58
+      }
+    },
+    "sources": [
+      "wallet_intel.db: wallet_tokens.first_buy_ts (early buys)",
+      "wallet_intel.db: token_stats.first_buyers (THE first buyer)",
+      "wallet_intel.db: wallets.tags (smart money / KOL labels)",
+      "vantage.db: alpha_wallets.score/style (Vantage reputation)",
+      "vantage.db: wallet_reputation.copy_trade_score"
+    ]
+  },
+  "watchlist": [
+    {
+      "address": "FixukbsKfJZEr996ubcWvwTAt1b6QJ2SfP3FJsBSbH33",
+      "conviction": 0.95,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 13,
+        "first_buyer_hits": 12,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.13,
+        "tags": [
+          "smart_degen"
+        ],
+        "vantage_score": 36.15,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "8deJ9xeUvXSJwicYptA9mHsU2rN2pDx37KWzkDkEXhU6",
+      "conviction": 0.9328,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 23,
+        "first_buyer_hits": 12,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "app_smart_money",
+          "axiom",
+          "gmgn",
+          "kol",
+          "photon",
+          "top_followed",
+          "top_renamed",
+          "trojan",
+          "wash_trader"
+        ],
+        "vantage_score": 34.54,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "PMJA8UQDyWTFw2Smhyp9jGA6aTaP7jKHR7BPudrgyYN",
+      "conviction": 0.9266,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 22,
+        "first_buyer_hits": 13,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "kol",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 30.29,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f",
+      "conviction": 0.9169,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 25,
+        "first_buyer_hits": 6,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "kol",
+          "top_followed",
+          "top_renamed",
+          "wash_trader"
+        ],
+        "vantage_score": 38.02,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt",
+      "conviction": 0.9042,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 13,
+        "first_buyer_hits": 9,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.18,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "kol",
+          "padre",
+          "photon",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 41.52,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "71PCu3E4JP5RDBoY6wJteqzxkKNXLyE1byg5BTAL9UtQ",
+      "conviction": 0.8979,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 16,
+        "first_buyer_hits": 10,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "app_smart_money",
+          "axiom",
+          "bullx",
+          "kol",
+          "padre",
+          "photon"
+        ],
+        "vantage_score": 19.48,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 15.0
+      }
+    },
+    {
+      "address": "99i9uVA7Q56bY22ajKKUfTZTgTeP5yCtVGsrG9J4pDYQ",
+      "conviction": 0.8936,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 16,
+        "first_buyer_hits": 8,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "bullx",
+          "kol",
+          "top_followed",
+          "top_renamed",
+          "wash_trader"
+        ],
+        "vantage_score": 32.42,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "suqh5sHtr8HyJ7q8scBimULPkPpA557prMG47xCHQfK",
+      "conviction": 0.885,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 24,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "kol",
+          "photon",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 35.6,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke",
+      "conviction": 0.8684,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 11,
+        "first_buyer_hits": 5,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "kol",
+          "launchpad_smart",
+          "padre",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 42.87,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "65NRohHfdjJhm7oW9kvPfvT8jRWpxg2KbhecVGQSJ3jR",
+      "conviction": 0.8591,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 8,
+        "first_buyer_hits": 8,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "kol",
+          "padre"
+        ],
+        "vantage_score": 30.61,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "7tiRXPM4wwBMRMYzmywRAE6jveS3gDbNyxgRrEoU6RLA",
+      "conviction": 0.8539,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 8,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.85,
+        "tags": [
+          "alpha:C",
+          "deployer",
+          "smart",
+          "smart_degen",
+          "style:ACCUMULATOR"
+        ],
+        "vantage_score": 30.88,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 45.0
+      }
+    },
+    {
+      "address": "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9",
+      "conviction": 0.8515,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 11,
+        "first_buyer_hits": 4,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "kol",
+          "padre",
+          "photon",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 40.64,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "ardinRsN1mNYVeoJWTBsWeYeXvuR9UUDGMsCDKpb6AT",
+      "conviction": 0.8491,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 9,
+        "first_buyer_hits": 5,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "kol",
+          "launchpad_smart",
+          "top_followed",
+          "wash_trader"
+        ],
+        "vantage_score": 39.38,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U",
+      "conviction": 0.8432,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 11,
+        "first_buyer_hits": 5,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "kol",
+          "padre",
+          "top_followed"
+        ],
+        "vantage_score": 29.44,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "97K6nsFhBWDKwQf6heDDhDtsCRC4779LPHSFZkc2zqK4",
+      "conviction": 0.8237,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 6,
+        "first_buyer_hits": 4,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "arbitrager",
+          "gmgn",
+          "kol",
+          "wash_trader"
+        ],
+        "vantage_score": 30.01,
+        "vantage_style": "SWING",
+        "copy_trade_score": 210.0
+      }
+    },
+    {
+      "address": "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd",
+      "conviction": 0.8129,
+      "tier": "S",
+      "evidence": {
+        "early_buys": 6,
+        "first_buyer_hits": 6,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "axiom",
+          "bullx",
+          "gmgn",
+          "top_followed",
+          "top_renamed",
+          "wash_trader"
+        ],
+        "vantage_score": 29.49,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "9NXNywh7n8d8ihgUY2FcJn9hEPwXkYCdLyBdbFiDm4rs",
+      "conviction": 0.799,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "smart_degen"
+        ],
+        "vantage_score": 36.85,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "41uh7g1DxYaYXdtjBiYCHcgBniV9Wx57b7HU7RXmx1Gg",
+      "conviction": 0.798,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 7,
+        "first_buyer_hits": 4,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "bullx",
+          "kol",
+          "top_followed"
+        ],
+        "vantage_score": 26.9,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5B52w1ZW9tuwUduueP5J7HXz5AcGfruGoX6YoAudvyxG",
+      "conviction": 0.7961,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 9,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.22,
+        "tags": [
+          "app_smart_money",
+          "axiom",
+          "kol",
+          "padre"
+        ],
+        "vantage_score": 28.12,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "s1unJYwKJXSu2UHsVY7uESvDTddyorPYrGnmEAEumbR",
+      "conviction": 0.794,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 5,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.13,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 42.54,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5R7fQjhed9DDcP6iiV68mjWp7pGPfxfaLtUZKpc7ae2G",
+      "conviction": 0.7937,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 4,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.73,
+        "tags": [
+          "smart_degen"
+        ],
+        "vantage_score": 28.6,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "VVV4C8wbLVU5Yw2JmdF7SPmoG2ubmJmmcjzHAJcdHgH",
+      "conviction": 0.7894,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 5,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.61,
+        "tags": [
+          "gmgn",
+          "kol",
+          "smart_degen"
+        ],
+        "vantage_score": 31.2,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "CUfoR95TXuDybVTfrobBz1bVH4QpdUp7MvFaEkxe9y2U",
+      "conviction": 0.788,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "smart_degen"
+        ],
+        "vantage_score": 38.22,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "9v9Xsxxu2pi4cDkTHtyL1Rg417uga48R2VcCP4L1Pe9R",
+      "conviction": 0.7877,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 4,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.85,
+        "tags": [
+          "alpha:C",
+          "smart_degen",
+          "style:ACCUMULATOR"
+        ],
+        "vantage_score": 26.84,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "BQVz7fQ1WsQmSTMY3umdPEPPTm1sdcBcX9sP7o6kPRmB",
+      "conviction": 0.7866,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 7,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "bullx",
+          "kol",
+          "launchpad_smart",
+          "padre",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 31.25,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "teddyYXw7aiNpDuQCeLb2YiBJhqthBid4C54BuWcPxm",
+      "conviction": 0.7853,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 4,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "padre",
+          "smart_degen",
+          "top_followed"
+        ],
+        "vantage_score": 21.26,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "r4p333SFEAfvtcV3kj6mD4PEeJYKj7ph3RmwLXFink7",
+      "conviction": 0.7829,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "axiom",
+          "fresh_wallet",
+          "smart_degen"
+        ],
+        "vantage_score": 42.06,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "FAdwf6bnogQTnaVews1gYKQCXU66t28Sqo4a8UJYEmUn",
+      "conviction": 0.7828,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 33.17,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "EQaxqKT3N981QBmdSUGNzAGK5S26zUwAdRHhBCgn87zD",
+      "conviction": 0.777,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.18,
+        "tags": [
+          "axiom",
+          "kol",
+          "launchpad_smart",
+          "padre",
+          "top_followed",
+          "top_renamed",
+          "trojan"
+        ],
+        "vantage_score": 23.13,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 75.0
+      }
+    },
+    {
+      "address": "nogZ6727iZNKkbtjfP7rRe4ywAqDmgZGBgiXfxFgmNz",
+      "conviction": 0.7753,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "smart_degen"
+        ],
+        "vantage_score": 32.79,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "4fZFcK8ms3bFMpo1ACzEUz8bH741fQW4zhAMGd5yZMHu",
+      "conviction": 0.7731,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "arbitrager",
+          "axiom",
+          "gmgn",
+          "kol",
+          "padre",
+          "top_followed"
+        ],
+        "vantage_score": 68.45,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 15.0
+      }
+    },
+    {
+      "address": "4uCT4g7YHH4xxfmfNfKUDenwGrRNGoZ9Ay1XFxfUGhQG",
+      "conviction": 0.7727,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 7,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "kol",
+          "padre",
+          "top_followed",
+          "top_renamed",
+          "wash_trader"
+        ],
+        "vantage_score": 40.79,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "CTfmUVKVRrVLMBssybWstPsVKdDVrwUB1nX7CrmGDh1G",
+      "conviction": 0.7681,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "smart_degen"
+        ],
+        "vantage_score": 27.59,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "7TSfbQsF7THTz6YdeDktgFEoESdFfMEArhCL7oYqEEjk",
+      "conviction": 0.7645,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.69,
+        "tags": [
+          "alpha:C",
+          "backtrack_winner",
+          "smart",
+          "style:SNIPER"
+        ],
+        "vantage_score": 33.8,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5t9xBNuDdGTGpjaPTx6hKd7sdRJbvtKS8Mhq6qVbo8Qz",
+      "conviction": 0.7635,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 5,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "app_smart_money",
+          "axiom",
+          "kol",
+          "padre",
+          "photon",
+          "top_followed",
+          "top_renamed",
+          "trojan"
+        ],
+        "vantage_score": 16.79,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 15.0
+      }
+    },
+    {
+      "address": "CT9dekyfadMYxLdfxV76ASSLo2QKXaj5cGPmvM2rcKVC",
+      "conviction": 0.7611,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 15.95,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "DargR6xaBojpVTVnR7PajxeLpLQGCy4o59htidnjoJ7c",
+      "conviction": 0.7604,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.86,
+        "tags": [
+          "alpha:C",
+          "backtrack_winner",
+          "smart",
+          "style:SWING"
+        ],
+        "vantage_score": 33.67,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "DZAa55HwXgv5hStwaTEJGXZz1DhHejvpb7Yr762urXam",
+      "conviction": 0.7593,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 4,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.68,
+        "tags": [
+          "axiom",
+          "bullx",
+          "kol"
+        ],
+        "vantage_score": 29.64,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5yzVtM9eYzgRwQ3HkaJXpGqduhBv9c9VEq8JyUEDxjDh",
+      "conviction": 0.7585,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.68,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 30.39,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "6KqACbASiR2mnY4ewFJ8RnssH6q8mQCRaJn7DdvaRf1S",
+      "conviction": 0.7478,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "launchpad_smart",
+          "photon",
+          "smart_degen"
+        ],
+        "vantage_score": 22.4,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "GKCUHMsiadxpiFkEw4dFbEfrXJ7gUU4dc5dGRs1Eon5U",
+      "conviction": 0.7453,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 9,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.18,
+        "tags": [
+          "smart_degen"
+        ],
+        "vantage_score": 37.88,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "FNhJCt9smgDVABeYGzAX6FrjuJxpauVG1mKRMa6P4AXm",
+      "conviction": 0.7389,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.22,
+        "tags": [
+          "axiom",
+          "smart_degen",
+          "trojan"
+        ],
+        "vantage_score": 33.72,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "CQjYGzyCxwH7SmjRSpoZ4jWg481LAkuumyWRot9FcGmz",
+      "conviction": 0.736,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "smart_degen"
+        ],
+        "vantage_score": 30.52,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "78N177fzNJpp8pG49xDv1efYcTMSzo9tPTKEA9mAVkh2",
+      "conviction": 0.7355,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "arbitrager",
+          "axiom",
+          "gmgn",
+          "kol",
+          "padre",
+          "top_followed",
+          "top_renamed",
+          "wash_trader"
+        ],
+        "vantage_score": 42.06,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 45.0
+      }
+    },
+    {
+      "address": "4sAUSQFdvWRBxR8UoLBYbw8CcXuwXWxnN8pXa4mtm5nU",
+      "conviction": 0.731,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 5,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "kol",
+          "padre",
+          "trojan",
+          "wash_trader"
+        ],
+        "vantage_score": 13.09,
+        "vantage_style": "SWING",
+        "copy_trade_score": 45.0
+      }
+    },
+    {
+      "address": "6KqVAU5CW47JSKtH24vnGo5an3SAGJLZY2VQuhaD2igu",
+      "conviction": 0.7289,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 32.72,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "7uLJ6GSpC3eLFv997BoMH9M2qcN7Tqt5RmiMFE6AgHY5",
+      "conviction": 0.7261,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "smart_degen"
+        ],
+        "vantage_score": 38.2,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "GJA1HEbxGnqBhBifH9uQauzXSB53to5rhDrzmKxhSU65",
+      "conviction": 0.7202,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 5,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "app_smart_money",
+          "kol",
+          "padre",
+          "photon"
+        ],
+        "vantage_score": 15.19,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "DydWtPZkHsZcaVkUiUMUxEsZU3UNPxvJ3MAyyVPdF3u1",
+      "conviction": 0.72,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.86,
+        "tags": [
+          "alpha:C",
+          "smart",
+          "smart_degen",
+          "style:SWING"
+        ],
+        "vantage_score": 31.52,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "7Ke2PvMakpMdipDMoaEt3EP5duveSDXRbxSXKPsoCK4T",
+      "conviction": 0.7195,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 34.05,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "C86oRMyUqzsXKXEAsCUbrhJuYuMbqXxE886s9MpUFF88",
+      "conviction": 0.7181,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.69,
+        "tags": [
+          "alpha:C",
+          "smart",
+          "smart_degen",
+          "style:ACCUMULATOR"
+        ],
+        "vantage_score": 40.72,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "9shBHjviUuynNdSS7Rks6jzqBYqB4aoGkAVU1gJpBkqt",
+      "conviction": 0.7149,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "smart_degen"
+        ],
+        "vantage_score": 37.54,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "2pB3ZfVHC5sqA4gEYZreo7ksKB4d753RvmYz3ZTgMhnQ",
+      "conviction": 0.7143,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.66,
+        "tags": [
+          "axiom",
+          "smart_degen",
+          "trojan"
+        ],
+        "vantage_score": 38.28,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "8CLkTAHZt1joF4Swh7YKjGAA8qge1T1SZdoWJJsoGgys",
+      "conviction": 0.7105,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 28.59,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "9XqwcSGu1bqf9wPNjaG22avEqtRa2RKmsShAw5sKoEjv",
+      "conviction": 0.7097,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.86,
+        "tags": [
+          "alpha:C",
+          "backtrack_winner",
+          "smart",
+          "style:SWING"
+        ],
+        "vantage_score": 38.29,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5gwsFVV66qqeWfXdJ1PhfKu5BJyfJcnKPPx6wPHV2XKD",
+      "conviction": 0.7065,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.86,
+        "tags": [
+          "alpha:C",
+          "smart",
+          "smart_degen",
+          "style:ACCUMULATOR"
+        ],
+        "vantage_score": 36.6,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "GBERKNpahPnBGmeUGWQVjGBDBj6CcJKpGz34FqegmTgu",
+      "conviction": 0.7054,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 3,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "axiom",
+          "bullx",
+          "gmgn",
+          "kol",
+          "padre",
+          "trojan"
+        ],
+        "vantage_score": 12.88,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "3kaskGCR1hucFFHUHc8XCHuN1Kzs9LBnYe6JfaWuMG1e",
+      "conviction": 0.7052,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "gmgn",
+          "smart_degen"
+        ],
+        "vantage_score": 31.35,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "GEESikmMPfB3RgfmtKZZ9LyRzvaGbCgAFrvts24pnqFk",
+      "conviction": 0.7045,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.73,
+        "tags": [
+          "alpha:C",
+          "smart",
+          "smart_degen",
+          "style:SNIPER"
+        ],
+        "vantage_score": 33.9,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "8gV31ab8mT4N4wKdu4rWNA6GgfZtuJtimtvVJrMaH13U",
+      "conviction": 0.7035,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.86,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 34.99,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "2kv8X2a9bxnBM8NKLc6BBTX2z13GFNRL4oRotMUJRva9",
+      "conviction": 0.7001,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 5,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "axiom",
+          "kol"
+        ],
+        "vantage_score": 12.7,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "FUE7sHmy55nVPj3kDYxwg21qbFdnY1jRiitWHEe42wKv",
+      "conviction": 0.6932,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.87,
+        "tags": [
+          "alpha:C",
+          "smart",
+          "smart_degen",
+          "style:SWING"
+        ],
+        "vantage_score": 29.57,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "HmBmSYwYEgEZuBUYuDs9xofyqBAkw4ywugB1d7R7sTGh",
+      "conviction": 0.6906,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.64,
+        "tags": [
+          "axiom",
+          "kol",
+          "photon",
+          "top_followed",
+          "top_renamed",
+          "wash_trader"
+        ],
+        "vantage_score": 30.72,
+        "vantage_style": "SWING",
+        "copy_trade_score": 15.0
+      }
+    },
+    {
+      "address": "6X7Ln5KPurRfNiNroyZxxi7VstEzuhd4jMefNEqAu7uV",
+      "conviction": 0.6855,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 1.16,
+        "tags": [
+          "alpha:C",
+          "smart",
+          "smart_degen",
+          "style:SWING"
+        ],
+        "vantage_score": 28.92,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "ENHiPZSxonyhnncCFpYuvH2sxVpQEXxGTD7i4zWtudt4",
+      "conviction": 0.6821,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.73,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 22.0,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "9yHA2HwcsHfjSLZQXPx3eJUQAnbYU3YdbfBuNxkgFQSP",
+      "conviction": 0.6814,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.88,
+        "tags": [
+          "alpha:C",
+          "smart",
+          "smart_degen",
+          "style:SWING"
+        ],
+        "vantage_score": 23.46,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "AVjEtg2ECYKXYeqdRQXvaaAZBjfTjYuSMTR4WLhKoeQN",
+      "conviction": 0.6695,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "kol",
+          "top_followed",
+          "top_renamed",
+          "wash_trader"
+        ],
+        "vantage_score": 32.38,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "BzoxfU8yafRQskpBnVwbPdiY3KKabGAZ5GSQEhZ1qQ5i",
+      "conviction": 0.6557,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "bullx",
+          "gmgn",
+          "padre",
+          "smart_degen",
+          "trojan"
+        ],
+        "vantage_score": null,
+        "vantage_style": null,
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "EaRAXkcXv6TYRcz94RiiBaRFqUW43AtfVxFUgjasAn54",
+      "conviction": 0.6554,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 1,
+        "median_lag_min": 5.4,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "smart_degen"
+        ],
+        "vantage_score": 35.38,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "B9kJYdzb4gB9AC3aFChReDhJ2D5YDCaR4UrEoen2NcyC",
+      "conviction": 0.6537,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.53,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 36.42,
+        "vantage_style": "SWING",
+        "copy_trade_score": 30.0
+      }
+    },
+    {
+      "address": "G8YPnBR8U4wCZbRA8ahj7D1fEPR3gwxQzT8uePsN9Q21",
+      "conviction": 0.651,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 9,
+        "first_buyer_hits": 9,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 1.21,
+        "tags": [
+          "helius"
+        ],
+        "vantage_score": null,
+        "vantage_style": null,
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "29ksDUQtXCVTXz6PCBSg9UrLxBYbFFqSv5aQDQGYYm4f",
+      "conviction": 0.651,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 1,
+        "median_lag_min": 7.17,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "gmgn",
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 32.42,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "9qvVKNuE3Z3DU8f5TcPaMT2SXebvGWPHQURatDh6zGRi",
+      "conviction": 0.6506,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 32.24,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "J898BLdjUWFPsvqwraj1rjg33rE9B6zJY6HvWFKx71fo",
+      "conviction": 0.6502,
+      "tier": "A",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "app_smart_money",
+          "axiom",
+          "bullx",
+          "gmgn",
+          "padre",
+          "smart_degen",
+          "top_followed",
+          "top_renamed",
+          "trojan"
+        ],
+        "vantage_score": 28.98,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 30.0
+      }
+    },
+    {
+      "address": "DePxtKV64QagrqRECzPwNUUexSG26whjmxS8bXMG86YV",
+      "conviction": 0.6457,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 2,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.61,
+        "tags": [
+          "arbitrager",
+          "axiom",
+          "kol",
+          "padre"
+        ],
+        "vantage_score": 21.2,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "qmEe3k2tFjPrzF6HYbernwhqEcttEPE8wxiNbtEeoA7",
+      "conviction": 0.6431,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 4,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 28.24,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "9Wagwcs6HVtMHaaxBjUbE7AKmxeg9nzEDcvXhN8bydUG",
+      "conviction": 0.6409,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 5,
+        "first_buyer_hits": 0,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "arbitrager",
+          "kol",
+          "padre",
+          "photon"
+        ],
+        "vantage_score": 19.41,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 15.0
+      }
+    },
+    {
+      "address": "7dt9V3DfKkhzmk8eyCyBFFjaAo2oRpR9w13JLAAs7j5u",
+      "conviction": 0.6346,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 1022.97,
+        "days_since_last_buy": 0.18,
+        "tags": [
+          "bluechip_owner",
+          "smart_degen"
+        ],
+        "vantage_score": 49.73,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 4.0
+      }
+    },
+    {
+      "address": "8n79PwcyrybEECM3ghGetPnm6Y2SRBVzJNd536Z1C1PU",
+      "conviction": 0.6325,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 37.26,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "AgiGpUAF25B7NL9u8byDcptPcYWi4eFU4kjtcRtaMmdQ",
+      "conviction": 0.6194,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.13,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 31.4,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "FhtZnHAmc2X3cTGNDQ6f3iM13Rp3BfzhPSyGaBD8fxck",
+      "conviction": 0.6191,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "axiom",
+          "launchpad_smart",
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 31.49,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "7xWakJ5wqBv1knE8hrihZ2J1QNzuoYJgvrJqRfFgEjqm",
+      "conviction": 0.6184,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.18,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 31.56,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "3ArHvdGs1v9gdwNEMRJihHfRUnwfFkYjtzcdSBD3cDdJ",
+      "conviction": 0.6177,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "launchpad_smart",
+          "padre",
+          "smart_degen",
+          "trojan"
+        ],
+        "vantage_score": 30.73,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "CC6DfePLea5UBREmGnHVCSjJRy4nEF1xuF6D6MbxdxTf",
+      "conviction": 0.6167,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "gmgn",
+          "smart_degen"
+        ],
+        "vantage_score": 28.89,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "DYAn4XpAkN5mhiXkRB7dGq4Jadnx6XYgu8L5b3WGhbrt",
+      "conviction": 0.6154,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "app_smart_money",
+          "axiom",
+          "kol",
+          "padre",
+          "smart_degen",
+          "top_followed",
+          "top_renamed",
+          "trojan"
+        ],
+        "vantage_score": 34.76,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "2AwjJTdTWCu6QjyZKvF6oVEd9TkQP1WYvVswFvDEySxn",
+      "conviction": 0.6132,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.13,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 28.14,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5kidNviTucvoHuFGuPQUikWokMxsLZMncGrS5gK9Cujs",
+      "conviction": 0.613,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.13,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 28.01,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "7bRKHriCHw5keDPPsTXx8vWZo3npMtuGeevMyMEseUTb",
+      "conviction": 0.6125,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.64,
+        "tags": [
+          "gmgn",
+          "smart_degen"
+        ],
+        "vantage_score": 34.12,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "H9TMtTxBL84rqpX8uqC3TpTgM9BmE3bJDPzStFk8U1Th",
+      "conviction": 0.6107,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 25.46,
+        "days_since_last_buy": 0.66,
+        "tags": [
+          "axiom",
+          "smart_degen",
+          "trojan"
+        ],
+        "vantage_score": 36.69,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 15.0
+      }
+    },
+    {
+      "address": "6TaDN51sj11VkX23eWeLGqZShJwEXLzMnc3eQi5KreUo",
+      "conviction": 0.6096,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 0,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 31.56,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "3XVMr35aSkJ2W8aqQLAEfQ59c9BcwRY5iq1f4576UgM9",
+      "conviction": 0.6093,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.18,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 26.7,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "8vqaSN7ygJjWAjRqpUjNt3uwBfQuaDNiuweoVcxyGQLu",
+      "conviction": 0.6027,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 0,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 27.9,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5QXMkhu3ycDtwsbkpE7xfVYtUiJxFBg8BU16KzbCkvkx",
+      "conviction": 0.5992,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.86,
+        "tags": [
+          "alpha:C",
+          "deployer",
+          "smart",
+          "smart_degen",
+          "style:SNIPER"
+        ],
+        "vantage_score": 33.03,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": 15.0
+      }
+    },
+    {
+      "address": "BeEN5iWBiEfJsNthuQnQKkKVWg9YkygcQHebNGoVUzik",
+      "conviction": 0.5979,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 43.59,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "FSAmbD6jm6SZZQadSJeC1paX3oTtAiY9hTx1UYzVoXqj",
+      "conviction": 0.5932,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "kol",
+          "launchpad_smart",
+          "padre",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 36.34,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5w8bbn5AKa54Sf2dZesxa4HCZrZ1Ga1ou7tpvJKr5H1a",
+      "conviction": 0.589,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "gmgn",
+          "smart_degen"
+        ],
+        "vantage_score": 32.25,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5h857RqmgcSjf2yz6E9Jh2zga5RaYTKzm1yK4uSnKD7n",
+      "conviction": 0.5881,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.18,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 33.58,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5434wePWhnTHMvB6NTNX3cK4XK3aEX8d4X1JAPEggpH1",
+      "conviction": 0.5871,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 36.89,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "Ggvk7pBLjvBDwj96gTtHpoKjCjSvh3udS7H8CxTMrruz",
+      "conviction": 0.5863,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 36.45,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "5ZJYjAUVMLAJGccsEMV5SNjgnBHduumHyMjjHUtSubkG",
+      "conviction": 0.5851,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.13,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 31.32,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "EyVaGh2eyp6zFPWLAiXx8wzEjn98VktPaANra78vkAKm",
+      "conviction": 0.5851,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.13,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 31.31,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "4mCMXF46aH8JxNdvotT5r39yskK8Gvg4dFEUbTyJb75P",
+      "conviction": 0.5836,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 16.82,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "6RGDFBUkXkAEDuWSARb7ysq1W7hfyhUqxtTT5aFrANJP",
+      "conviction": 0.5807,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.18,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "smart_degen"
+        ],
+        "vantage_score": 29.64,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "bTiNAiDWsAzuDvqf1vGcv3GuvgLxVvaj76KABoqkJa6",
+      "conviction": 0.5804,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 23.84,
+        "days_since_last_buy": 0.04,
+        "tags": [
+          "axiom",
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 27.69,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "3S6MGQMjytdoNiaXudt2xMJEdtVg9vV8GELXFfwKt4nk",
+      "conviction": 0.5804,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "launchpad_smart",
+          "smart_degen"
+        ],
+        "vantage_score": 33.3,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "8fMq3Kz6CnayEJaZ7SfFnX1KPCpNjCSdoa8F2kMzewjd",
+      "conviction": 0.5747,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 31.24,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "EaTD4uSSRvG7qPr8afLaKVzG4aNXRfR1qRu77nprzJ38",
+      "conviction": 0.5743,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 49.66,
+        "days_since_last_buy": 0.53,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 30.59,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "7zkA8e86TNqhSciMcojHTJie6QyASDf3c6tFyHDXBRUr",
+      "conviction": 0.5732,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.66,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 31.54,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "2tw33mipyCRpMmS2UMr7LWremZitksj88rnTKDyPtarS",
+      "conviction": 0.573,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "gmgn",
+          "launchpad_smart",
+          "smart_degen"
+        ],
+        "vantage_score": 29.38,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "2pUza9ic3zVni4EtKf9e6cys7Jwd6P974ac3szKiSZRU",
+      "conviction": 0.5729,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 6.14,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 29.27,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "2rnmRXibwTUYgVRGFuwrvp6oYcUcttL7E7XT3LYG7D4o",
+      "conviction": 0.5711,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 5.39,
+        "days_since_last_buy": 0.89,
+        "tags": [
+          "alpha:C",
+          "backtrack_winner",
+          "smart",
+          "style:SWING"
+        ],
+        "vantage_score": 33.12,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "EKpg2nvp2MTSiwhGmMQTQGJw14rF3cGk8F8iDeGr9rSk",
+      "conviction": 0.5687,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.66,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 29.14,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "FB7uZh7qw1mgKFoKPUpUzDttuxodtVNhkutKXxXMQvSp",
+      "conviction": 0.5674,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 5.39,
+        "days_since_last_buy": 0.86,
+        "tags": [
+          "alpha:C",
+          "smart",
+          "smart_degen",
+          "style:SNIPER"
+        ],
+        "vantage_score": 30.92,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "BnNMkMRhQmAd56KPN9141ULX9HhPmQrkSzYxr8CCPbyX",
+      "conviction": 0.5662,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 101.91,
+        "days_since_last_buy": 0.66,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 27.8,
+        "vantage_style": "SNIPER",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "B8AiiNQMB59PDwDNJxmEzSKPi2LCwGWahPExZScs6Sdq",
+      "conviction": 0.5653,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 20.32,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "ZmqiUKrd8P7DYSqhhy5f6deTaSSuVLgu2L1awVqC8nr",
+      "conviction": 0.5647,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 280.75,
+        "days_since_last_buy": 0.22,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 21.53,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "74SdNTSeAt7L8Eb75bV1tHcZpux46CP7k4ZdpoaANZns",
+      "conviction": 0.5625,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.73,
+        "tags": [
+          "padre",
+          "smart_degen"
+        ],
+        "vantage_score": 26.62,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "CiPEzMRkdAvovQ8sD2KiWwSbhJ9Hi39P9svf6BndTBeh",
+      "conviction": 0.5624,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.22,
+        "tags": [
+          "smart_degen",
+          "trojan"
+        ],
+        "vantage_score": 20.33,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "GHJFdDSYx1kGg7nLTDZ7B468SqHsqySZwHRSxs4DgEVk",
+      "conviction": 0.5613,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.85,
+        "tags": [
+          "alpha:C",
+          "backtrack_winner",
+          "style:SWING"
+        ],
+        "vantage_score": 27.41,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "9Ma6JBcu8cfney6U7Q7fT2t55uSTpYVbtmF9kV2XtTaF",
+      "conviction": 0.5583,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.64,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 23.41,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "4aE7NqEznFdD7kBvyhj8wvoQvTjezvmiB8vdHZfmSD5B",
+      "conviction": 0.5559,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.57,
+        "tags": [
+          "axiom",
+          "smart_degen"
+        ],
+        "vantage_score": 21.24,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "8MaVa9kdt3NW4Q5HyNAm1X5LbR8PQRVDc1W8NMVK88D5",
+      "conviction": 0.5492,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 6.14,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "app_smart_money",
+          "axiom",
+          "kol",
+          "padre",
+          "photon",
+          "top_followed",
+          "top_renamed",
+          "wash_trader"
+        ],
+        "vantage_score": 36.67,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "E7gozEiAPNhpJsdS52amhhN2XCAqLZa7WPrhyR6C8o4S",
+      "conviction": 0.5485,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "axiom",
+          "kol",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 18.21,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "BCnqsPEtA1TkgednYEebRpkmwFRJDCjMQcKZMMtEdArc",
+      "conviction": 0.548,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.09,
+        "tags": [
+          "axiom",
+          "kol",
+          "launchpad_smart",
+          "padre",
+          "photon",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 31.06,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "215nhcAHjQQGgwpQSJQ7zR26etbjjtVdW74NLzwEgQjP",
+      "conviction": 0.5476,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 843.35,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "app_smart_money",
+          "arbitrager",
+          "axiom",
+          "gmgn",
+          "kol",
+          "padre",
+          "photon"
+        ],
+        "vantage_score": 16.72,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": 15.0
+      }
+    },
+    {
+      "address": "AsEqwGCNfnB4LK7ewMGc9i9LJ1nsQRNzBGrADY1GNm8Z",
+      "conviction": 0.544,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.13,
+        "tags": [
+          "axiom",
+          "bullx",
+          "gmgn",
+          "kol",
+          "padre",
+          "trojan"
+        ],
+        "vantage_score": 11.28,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "2YJbcB9G8wePrpVBcT31o8JEed6L3abgyCjt5qkJMymV",
+      "conviction": 0.5432,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "axiom",
+          "bullx",
+          "kol",
+          "padre",
+          "photon",
+          "top_followed",
+          "top_renamed"
+        ],
+        "vantage_score": 29.21,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "B7cRRKmjDt5KkFKfhD3NicgwywvkicgHvqVySU4LN4od",
+      "conviction": 0.5422,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.89,
+        "tags": [
+          "alpha:C",
+          "smart_degen",
+          "style:SWING"
+        ],
+        "vantage_score": 17.81,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "G5KeBuoDtmBrRQt9fMy29FCUSXDWMwHe7W4skfwDtURv",
+      "conviction": 0.5284,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.14,
+        "tags": [
+          "gmgn",
+          "kol",
+          "padre"
+        ],
+        "vantage_score": 9.84,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "J3CuQHzVmSvrYSMhvUU2dTsZB9Z4R2UKENyhDiJ5W95K",
+      "conviction": 0.5256,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 3,
+        "first_buyer_hits": 1,
+        "median_lag_min": 0.0,
+        "days_since_last_buy": 0.49,
+        "tags": [
+          "gmgn",
+          "kol"
+        ],
+        "vantage_score": 12.6,
+        "vantage_style": "SWING",
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "6mPz54qVY7L8tRfvzSjaZ47xgHyCY3LKsCeAXRrNBRFi",
+      "conviction": 0.514,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 101.91,
+        "days_since_last_buy": 0.66,
+        "tags": [
+          "gmgn",
+          "smart_degen"
+        ],
+        "vantage_score": null,
+        "vantage_style": null,
+        "copy_trade_score": null
+      }
+    },
+    {
+      "address": "926XuvXosALA5EFivN16y4Ey8BY21kZYUXvhkNYBwYSj",
+      "conviction": 0.5,
+      "tier": "B",
+      "evidence": {
+        "early_buys": 2,
+        "first_buyer_hits": 1,
+        "median_lag_min": 50.9,
+        "days_since_last_buy": 0.69,
+        "tags": [
+          "gmgn",
+          "kol"
+        ],
+        "vantage_score": 19.62,
+        "vantage_style": "ACCUMULATOR",
+        "copy_trade_score": null
+      }
+    }
+  ]
+}
