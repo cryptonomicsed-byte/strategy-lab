@@ -579,6 +579,21 @@ def serve(port: int = 8010) -> None:
                 if (q.get("record") or ["0"])[0] == "1":
                     append_verdict(bundle)
                 return self._json(200, bundle)
+            if path == "/api/top":
+                q = parse_qs(urlparse(self.path).query)
+                n = int((q.get("n") or ["5"])[0])
+                record = (q.get("record") or ["0"])[0] == "1"
+                try:
+                    picks = fetch_picks_http()
+                except Exception as e:  # noqa: BLE001 -- surface fusion-source outage as JSON, not a 500 stack trace
+                    return self._json(502, {"error": f"could not reach fusion picks source: {e}"})
+                bundles = []
+                for p in picks[: max(1, n)]:
+                    b = compute_bundle(p["token_addr"])
+                    if record:
+                        append_verdict(b)
+                    bundles.append(b)
+                return self._json(200, {"bundles": bundles})
             return self._json(404, {"error": "not found"})
 
         def _json(self, code, payload):
@@ -592,8 +607,13 @@ def serve(port: int = 8010) -> None:
         def log_message(self, *a):
             pass
 
-    srv = http.server.ThreadingHTTPServer(("127.0.0.1", port), H)
-    print(f"hub convergence listening on 127.0.0.1:{port} (schema {STATUS})", flush=True)
+    # Bound to the WireGuard mesh interface only (10.88.0.1 on hostinger-vps)
+    # -- not reachable from the public internet or even localhost callers
+    # outside the mesh. kanban's Elixir app on Contabo (10.88.0.2) is the
+    # intended caller.
+    bind_host = os.environ.get("HUB_BIND_HOST", "10.88.0.1")
+    srv = http.server.ThreadingHTTPServer((bind_host, port), H)
+    print(f"hub convergence listening on {bind_host}:{port} (schema {STATUS})", flush=True)
     srv.serve_forever()
 
 
