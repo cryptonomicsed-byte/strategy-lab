@@ -560,6 +560,17 @@ def subprocess_run(cmd: list[str]):
 
 
 # -------------------------------------------------------------------- http
+def hub_port() -> int:
+    """HUB_PORT env, else 8010. A non-integer is an error, not a silent default."""
+    raw = os.environ.get("HUB_PORT", "").strip()
+    if not raw:
+        return 8010
+    port = int(raw)
+    if not 0 < port < 65536:
+        raise ValueError(f"HUB_PORT must be 1-65535, got {raw!r}")
+    return port
+
+
 def serve(port: int = 8010) -> None:
     import http.server
 
@@ -626,7 +637,9 @@ def main() -> None:
     ap.add_argument("--token", help="restrict --mark to one token")
     ap.add_argument("--due", action="store_true", help="list verdicts with due follow-ups")
     ap.add_argument("--serve", action="store_true", help="run HTTP endpoint")
-    ap.add_argument("--port", type=int, default=8010)
+    # HUB_PORT (P1-07): the port can come from the unit's environment, like
+    # HUB_BIND_HOST. --port still wins when given. Default unchanged (8010).
+    ap.add_argument("--port", type=int, default=hub_port())
     ap.add_argument("--no-record", action="store_true", help="do not append to verdict log")
     args = ap.parse_args()
 
