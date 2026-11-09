@@ -232,7 +232,11 @@ def load_watchlist() -> tuple[dict[str, float], str]:
         try:
             with open(path) as f:
                 data = json.load(f)
-            for entry in data if isinstance(data, list) else []:
+            # radar/build_watchlist.py writes {"schema_version", "generated_at",
+            # "meta", "watchlist": [...]}; this read only a bare list, so the
+            # radar component always saw an empty watchlist. Accept both.
+            entries = data.get("watchlist", []) if isinstance(data, dict) else data
+            for entry in entries if isinstance(entries, list) else []:
                 if isinstance(entry, dict) and entry.get("address"):
                     wl[entry["address"].lower()] = float(entry.get("conviction") or 0.0)
         except Exception:
