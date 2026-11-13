@@ -3,14 +3,15 @@
 **Owner:** LANE 3 — Convergence Hub (panel-omokoda, branch `hub`)
 **STATUS: LOCKED** (2026-08-19 — orchestrator-locked: all 3 lanes merged, see STRATEGY.md) — hub lane finalization complete: schema v1 live-verified
 against a real token (see §8) and `hub/score.py` records verdicts end-to-end.
-The score degrades gracefully and reports exactly what it knows while lane 1/2
-deliverables are outstanding.
-**LOCKED** only when — per the convergence protocol — ALL of:
-  1. lane 1 merges `engine/params.json` (+ optional `engine/fired_signals.json`)
-  2. lane 2 merges `radar/watchlist.json` (repo copy replaces the axiom fallback)
-  3. all three panels agree on this formula (disagreements via `proposals/`)
-  4. all three branches merged to main and STRATEGY.md shows `STATUS: LOCKED`
-Until then this document is the hub's final word; consumers can rely on it.
+All lock conditions below are now MET:
+  1. lane 1 merged `engine/params.json` (5-signal stack, weights sum to 1.0)
+  2. lane 2 merged `radar/watchlist.json` (S/A/B tiers, min_conviction 0.50)
+     plus `radar/cluster_detect.py` + live `radar/clusters/`
+  3. all three panels agree on this formula (orchestrator-mediated, 2026-08-19)
+  4. all three branches merged to main and STRATEGY.md documents the lock
+The score degrades gracefully when a component is absent — but with lanes 1+2
+landed, absence is now the exception, and it is always reported in
+`data_quality`.
 
 This document is the contract every consumer reads. It answers:
 *what does the ensemble say about token X right now?*
@@ -30,7 +31,7 @@ This document is the contract every consumer reads. It answers:
 - If **no** component is present → `score = null`, verdict `NO`,
   reason `insufficient_data`.
 
-### Weights (DRAFT — calibration will move them)
+### Weights (LOCKED v1 — calibration may move them via §7 + orchestrator)
 
 | Component | Weight | Source lane | What it measures |
 |---|---|---|---|
@@ -38,9 +39,9 @@ This document is the contract every consumer reads. It answers:
 | `radar`   | 0.35 | 2 (radar)   | first-mover wallet cluster buying the token inside the window |
 | `fusion`  | 0.30 | existing    | ares-signal-fusion pick: S_signal + S_wallet (S_market = gate context) |
 
-Weights are equal-ish until real outcomes say otherwise. Calibration procedure
-in §7. Any proposal to change weights goes through `proposals/` and is decided
-by the orchestrator (Fold4) — never silently edited.
+Weights locked at v1; calibration (§7) may move them after ≥ 20 resolved
+verdicts. Any proposal to change weights goes through `proposals/` and is
+decided by the orchestrator (Fold4) — never silently edited.
 
 ## 2. Components
 
@@ -82,15 +83,19 @@ publishes live firings, `engine/fired_signals.json`.
 - `decay(age) = exp(-ln2 · age / half_life)` (true half-life).
 - `present = true` iff `params.json` exists AND ≥ 1 signal could be evaluated.
 
-**Status today:** lane 1 has not landed `params.json` → `engine.present = false`,
-`engine.note = "params.json not landed"`. The score runs on radar+fusion only
-and says so in `data_quality`.
+**Status today (LOCKED):** lane 1's `engine/params.json` has landed — 5
+signals (new_pool_graduation 0.25, bundler_share 0.20, volume_pressure 0.20,
+dev_holding 0.20, holder_concentration 0.15; weights sum to 1.0; half-lives
+1–4h). The engine component evaluates fired records against this stack;
+`engine.present` is false only when no signal has fired for the token.
 
 ### 2.2 `radar` — lane 2 first-mover cluster
 
-Reads `radar/watchlist.json` (lane 2's ranked first-movers) — until it lands in
-the repo, falls back to `/opt/ares/axiom/data/watchlist.json` and flags the
-fallback. Cluster evidence is computed live from `wallet_intel.db`
+Reads `radar/watchlist.json` (lane 2's ranked first-movers — landed in the
+repo: 132 qualified wallets, tiers S ≥0.80 / A ≥0.65 / B ≥0.50, conviction
+0.50–0.95). Falls back to `/opt/ares/axiom/data/watchlist.json` only if the
+repo copy is missing, and flags the fallback. Cluster evidence is computed
+live from `wallet_intel.db`
 (`wallet_tokens.first_buy_ts` ∩ watchlist, `token_stats.buy_volume`).
 
 **Cluster** = distinct watchlist wallets with `conviction ≥ min_conviction`
@@ -165,7 +170,7 @@ The score must say "I don't know" rather than guess:
 ```json
 {
   "schema_version": 1,
-  "status": "NEAR-LOCK",
+  "status": "LOCKED",
   "token": "7c9sXHS879M9fq9Gex4pCSHYGeBDVK7yErKGMAxypump",
   "symbol": "CATURN",
   "ts": 1787124715.41,
@@ -220,3 +225,11 @@ The score must say "I don't know" rather than guess:
   Kirkiversary (`915YcCbtupYLTz3RwfKjYngzBG2Bk2RX8We4D2HSpump`, fusion rank 1)
   → score 41.94, verdict WATCH, gates passed, verdict appended to the ledger.
   Full LOCK pending lane 1/2 deliverables + 3-panel sign-off (see header).
+- 2026-08-19 — v1 LOCKED: orchestrator-mediated lock (commit 4062602).
+  Lane 1 `engine/params.json` (5-signal stack) and lane 2 `radar/watchlist.json`
+  (132 wallets, S/A/B tiers) landed; all three branches merged to main.
+  Live re-verified on the merged tree: `hub/score.py` against Kirkiversary
+  (`915YcCbtupYLTz3RwfKjYngzBG2Bk2RX8We4D2HSpump`) → status LOCKED, engine
+  params read, radar watchlist read, fusion rank 1, score 57.03, verdict
+  WATCH, gates passed. `score.py` loader now accepts lane 2's
+  `{"meta":…,"watchlist":[…]}` format.

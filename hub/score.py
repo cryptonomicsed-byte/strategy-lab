@@ -8,7 +8,7 @@ evidence (lane 2, computed live from wallet_intel.db) and the existing
 ares-signal-fusion pick (S_signal/S_wallet/S_market) and returns the
 EARLY-ENTRY bundle: {token, score, components, fired_signals[], verdict}.
 
-Canonical definition of the score: hub/score_schema.md (STATUS: NEAR-LOCK).
+Canonical definition of the score: hub/score_schema.md (STATUS: LOCKED).
 PAPER ONLY — reads data, never places an order.
 
 Usage:
@@ -53,7 +53,7 @@ RADAR_WATCHLIST = os.environ.get(
     "RADAR_WATCHLIST", os.path.join(REPO_ROOT, "radar", "watchlist.json"))
 
 SCHEMA_VERSION = 1
-STATUS = "NEAR-LOCK"  # -> LOCKED when engine+radar land and all 3 lanes agree
+STATUS = "LOCKED"  # orchestrator-locked 2026-08-19 (all 3 lanes merged)
 
 # ------------------------------------------------------------------ weights
 # DRAFT weights — calibration (§7 of score_schema.md) may move them, only
@@ -222,7 +222,8 @@ def engine_component(addr: str, now: float) -> dict:
 # -------------------------------------------------------------------- radar
 def load_watchlist() -> tuple[dict[str, float], str]:
     """address(lower) -> conviction. Repo radar/watchlist.json wins; until
-    lane 2 lands it, fall back to the axiom working copy (flagged)."""
+    lane 2 lands it, fall back to the axiom working copy (flagged). Accepts
+    both a bare list and the landed {'meta':…, 'watchlist':[…] } wrapper."""
     path = RADAR_WATCHLIST
     source = "repo:radar/watchlist.json"
     if not os.path.exists(path):
