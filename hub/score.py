@@ -257,17 +257,29 @@ def radar_component(addr: str, now: float) -> dict:
     if not os.path.exists(WALLET_DB):
         return {"present": False, "value": None, "weight": WEIGHTS["radar"],
                 "drivers": [], "note": "wallet_intel.db unavailable"}
-    conn = sqlite3.connect(f"file:{WALLET_DB}?mode=ro", uri=True, timeout=5)
+    conn = None
     try:
+        conn = sqlite3.connect(f"file:{WALLET_DB}?mode=ro", uri=True, timeout=5)
         conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA busy_timeout = 5000")
         cutoff = now - RADAR_WINDOW_MIN * 60
         rows = conn.execute(
             "SELECT wallet, first_buy_ts FROM wallet_tokens WHERE mint = ? AND first_buy_ts IS NOT NULL",
             (addr,)).fetchall()
         vol_row = conn.execute(
             "SELECT buy_volume FROM token_stats WHERE mint = ?", (addr,)).fetchone()
+    except sqlite3.Error as e:
+        # A component outage is not an endpoint outage: wallet_intel.db is
+        # written by other processes, and a writer holding the rollback journal
+        # past the busy timeout used to raise out of compute_bundle and drop the
+        # whole HTTP reply (empty response, not even a 500). Same shape as the
+        # other unavailable-source branches above.
+        return {"present": False, "value": None, "weight": WEIGHTS["radar"],
+                "drivers": [], "note": f"wallet_intel.db unavailable: {e}",
+                "cluster": {"wallet_count": 0}}
     finally:
-        conn.close()
+        if conn is not None:
+            conn.close()
     vol = float(vol_row["buy_volume"]) if vol_row and vol_row["buy_volume"] else 0.0
 
     members = []
